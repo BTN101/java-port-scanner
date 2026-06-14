@@ -59,6 +59,13 @@ mindful of thread count) resolved it.
 Port 137 (NetBIOS) returned "error" — it's a UDP service, and this scanner 
 is TCP-only, demonstrating a real limitation of TCP-based scanning.
 
+## Project structure
+
+- `TestPort.java` — entry point, sets up the thread pool and dispatches scan tasks
+- `PortCheckTask.java` — the threaded Stage 3 implementation, one task per port
+- `CheckPort.java` — the original sequential Stage 2 implementation, kept 
+  for comparison (this is what produced the 108-second result above)
+  
 ## Usage
 
 ```bash
